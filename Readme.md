@@ -32,8 +32,9 @@ Usage
 php MSHT.php languageModel.binary inputSentances.txt
 ```
 
-The output generates three files:
+The output generates four files:
 
 * output.google.txt
 * output.bing.txt
 * output.letsmt.txt
+* output.hybrid.txt

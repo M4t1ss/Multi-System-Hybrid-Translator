@@ -1,17 +1,7 @@
 <?php
 
 //configuration
-$sourceLanguage		= "en";
-$targetLanguage		= "lv";
-//Google -	https://cloud.google.com/translate/
-$GoogleTranslateKey	= "";
-//Bing -	http://www.bing.com/dev/en-us/translator
-$BingClientID		= "";
-$BingClientSecret	= "";
-//LetsMT -	https://www.letsmt.eu
-$LetsMTusername		= ""; //email
-$LetsMTpassword		= ""; //password
-$LetsMTSystemID		= "";
+include 'config.php';
 
 if(!isset($argv[1]) || !isset($argv[2]) || $argv[1]=="" || $argv[2]==""){
 	echo "Please provide file names language model and input sentences!\n";
@@ -33,14 +23,9 @@ if ($in) {
     while (($sourceSentence = fgets($in)) !== false) {
 		$sourceSentence = str_replace(array("\r", "\n"), '', $sourceSentence);
 		
-		// echo "SOURCE - ".$sourceSentence."\n";
-		
 		$sentenceOne = translateWithGoogle($sourceLanguage, $targetLanguage, $sourceSentence);
-		// echo "GOOGLE - ".$sentenceOne."\n";
 		$sentenceTwo = translateWithBing($sourceLanguage, $targetLanguage, $sourceSentence);
-		// echo "BING - ".$sentenceTwo."\n";
 		$sentenceThree = translateWithLetsMT($sourceSentence);
-		// echo "LETSMT - ".$sentenceThree."\n";
 		
 		fwrite($outg, $sentenceOne."\n");
 		fwrite($outb, $sentenceTwo."\n");
@@ -59,12 +44,10 @@ if ($in) {
 		$perplexities[] = shell_exec('./exp.sh '.$languageModel.' "'.$sentenceThree.'"');
 
 		fwrite($outh, $sentences[array_keys($perplexities, min($perplexities))[0]]."\n");
-		// echo "Sentence done!\n";
 	}
     fclose($in);
 	fclose($outg);
 	fclose($outb);
 	fclose($outl);
 	fclose($outh);
-	// echo "\nFiles closed, all done!\n";
 }
