@@ -12,3 +12,5 @@ $BingClientSecret	= "";
 $LetsMTusername		= ""; //email
 $LetsMTpassword		= ""; //password
 $LetsMTSystemID		= "";
+//Write chunk selection statistics?
+$writeStats = true;

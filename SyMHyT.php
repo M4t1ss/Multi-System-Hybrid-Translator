@@ -18,6 +18,11 @@ if(!isset($argv[1]) || !isset($argv[2]) || !isset($argv[3]) || $argv[1]=="" || $
 $languageModel 	= $argv[1];
 $inputFile		= $argv[2];
 $grammar	 	= $argv[3];
+//Count output chunks
+$totalChunks 	= 0;
+$googleChunks 	= 0;
+$bingChunks 	= 0;
+$letsmtChunks 	= 0;
 
 //Parse the input sentences
 shell_exec('java -Xmx1024m -jar BerkeleyParser.jar -gr '.$grammar.' < '.$inputFile.' > '.$inputFile.'.parsed');
@@ -79,6 +84,23 @@ if ($inCh) {
 			$outputString = trim($outputString)." ";
 			fwrite($outh, $outputString);
 			
+			//Count chunks
+			$totalChunks++;
+			$googleSentence = str_replace(array("\r", "\n"), '', $sentenceOne);
+			$bingSentence = str_replace(array("\r", "\n"), '', $sentenceTwo);
+			$lesmtSentence = str_replace(array("\r", "\n"), '', $sentenceThree);
+			$googleSentence = trim($googleSentence)." ";	
+			$bingSentence = trim($bingSentence)." ";	
+			$lesmtSentence = trim($lesmtSentence)." ";	
+			
+			if ($outputString == $lesmtSentence){
+				$letsmtChunks++;
+			}elseif($outputString == $bingSentence){
+				$bingChunks++;
+			}elseif($outputString == $googleSentence){
+				$googleChunks++;
+			}
+			
 		}
 	}
     fclose($inCh);
@@ -86,4 +108,14 @@ if ($inCh) {
 	fclose($outb);
 	fclose($outl);
 	fclose($outh);
+	
+	if($writeStats){
+		//Write chunk counts
+		$outCount = fopen("stats.txt", "a") or die("Can't create output file!"); 	//Hybrid count
+		fwrite($outCount, "Total chunk count: ".$totalChunks."\n");
+		fwrite($outCount, "Google chunk count: ".$googleChunks."\n");
+		fwrite($outCount, "Bing chunk count: ".$bingChunks."\n");
+		fwrite($outCount, "LetsMT chunk count: ".$letsmtChunks."\n");
+		fclose($outCount);
+	}
 }
