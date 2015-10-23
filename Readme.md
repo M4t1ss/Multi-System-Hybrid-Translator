@@ -1,4 +1,4 @@
-Syntactic Multi-System Hybrid Translator
+Syntax-based Multi-System Hybrid Translator
 ===================================
 
 This is a hybrid solution for acquiring the best translation out of multiple online MT engines 
@@ -41,16 +41,16 @@ Supported APIs
 Usage
 -----------
 
-The SMSHT requires three parameters - the language model, input sentences, grammar file. It is run with the following command:
+The SyMHyT requires three parameters - the language model, input sentences, grammar file. It is run with the following command:
 
 ```
-php SMSHT.php <language model> <input sentences> <grammar>
+php SyMHyT.php <language model> <input sentences> <grammar>
 ```
 
 For example:
 
 ```
-php SMSHT.php languageModel.binary inputSentences.txt eng_sm6.gr
+php SyMHyT.php languageModel.binary inputSentences.txt eng_sm6.gr
 ```
 
 The output generates four three files:
@@ -63,7 +63,7 @@ The output generates four three files:
 Utils
 -----------
 
-The utils directory contains separate parts of the SMSHT system that can be run as standalone
+The utils directory contains separate parts of the SyMHyT system that can be run as standalone
 
 * utils/chunking/ contains files for individual chunking and unchunking
 	* to parse an input file with the Berkeley Parser (a parsed file is required as input for the chunker) run:
