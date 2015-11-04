@@ -21,6 +21,7 @@ Requirements
   * Google Translate - https://cloud.google.com/translate/
   * Bing Translator - http://www.bing.com/dev/en-us/translator
   * LetsMT - https://www.letsmt.eu
+  * Yandex Translator - https://tech.yandex.com/translate/
 
 * Tokenized input sentances
 
@@ -30,6 +31,7 @@ Supported APIs
 * Google Translate
 * Bing Translator
 * LetsMT
+* Yandex Translator
 
 Usage
 -----------
@@ -38,9 +40,10 @@ Usage
 php MSHT.php languageModel.binary inputSentances.txt
 ```
 
-The output generates four files:
+The output generates five files:
 
 * output.google.txt
 * output.bing.txt
 * output.letsmt.txt
+* output.yandex.txt
 * output.hybrid.txt

@@ -3,7 +3,7 @@
 $sourceLanguage		= "en";
 $targetLanguage		= "lv";
 //Google -	https://cloud.google.com/translate/
-$GoogleTranslateKey	= "";
+$GoogleTranslateKey	= ""; //API key
 //Bing -	http://www.bing.com/dev/en-us/translator
 $BingClientID		= "";
 $BingClientSecret	= "";
@@ -11,3 +11,5 @@ $BingClientSecret	= "";
 $LetsMTusername		= ""; //email
 $LetsMTpassword		= ""; //password
 $LetsMTSystemID		= "";
+//Yandex - 	https://tech.yandex.com/translate/
+$YandexApiKey		= ""; //API key

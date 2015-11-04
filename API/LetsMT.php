@@ -1,11 +1,7 @@
 <?php
-// echo translateWithLetsMT("the chairman shall not vote .");
 
 function translateWithLetsMT($textToTranslate){
-	//Translation stuff
-	// $sourceLanguage		= "en";
-	// $targetLanguage		= "lv";
-	// $textToTranslate		= "this arrangement applies to bovine meat . ";
+	
 	$textToTranslate = urlencode($textToTranslate);
 
 	//API stuff
