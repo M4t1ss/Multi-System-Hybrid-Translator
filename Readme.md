@@ -22,6 +22,7 @@ Requirements
   * Bing Translator - http://www.bing.com/dev/en-us/translator
   * LetsMT - https://www.letsmt.eu
   * Yandex Translator - https://tech.yandex.com/translate/
+  * iTranslate - http://itranslate4.eu/en/api/settings
 
 * Tokenized input sentances
 
@@ -32,6 +33,7 @@ Supported APIs
 * Bing Translator
 * LetsMT
 * Yandex Translator
+* iTranslate
 
 Usage
 -----------
@@ -40,10 +42,11 @@ Usage
 php MSHT.php languageModel.binary inputSentances.txt
 ```
 
-The output generates five files:
+The output generates six files:
 
 * output.google.txt
 * output.bing.txt
 * output.letsmt.txt
 * output.yandex.txt
+* output.itranslate.txt
 * output.hybrid.txt
